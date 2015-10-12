@@ -1,11 +1,23 @@
 #!/usr/local/bin/python
 from __future__ import print_function
-import serial
+import random
 import time
+import serial
 
 
-def clean_data():
-    return True
+def blink_flares():
+    filename = 'cleaned_data.txt'
+    flare_delays = open(filename, 'r').read().split(',')
+    leds = [b'1', b'2', b'3', b'4', b'5', b'6']
+    port = serial.Serial('/dev/cu.usbmodem1421', 9600)
+
+    for delay in flare_delays:
+        led = random.choice(leds)
+        port.write(led)
+        print('led: {0}'.format(led))
+        print('delay: {0}'.format(delay))
+        port.write(delay)
+        time.sleep(.500)
 
 
 def write_to_serial():
@@ -22,4 +34,5 @@ def write_to_serial():
 
 
 if __name__ == '__main__':
-    write_to_serial()
+    # write_to_serial()
+    blink_flares()
