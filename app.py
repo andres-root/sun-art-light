@@ -1,6 +1,11 @@
-#!/usr/local/bin/python3
+#!/usr/local/bin/python
+from __future__ import print_function
 import serial
 import time
+
+
+def clean_data():
+    return True
 
 
 def write_to_serial():

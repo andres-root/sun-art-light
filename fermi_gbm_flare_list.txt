@@ -1,10 +1,3 @@
-Fermi GBM Flare List  (generated 12-Oct-2015 08:18)                                                                
-                                                                                                                   
-Total # flares: 4509  Time range: 12-Aug-2008 00:00:00.000 - 11-Oct-2015 00:00:00.000                              
-                                                                                                                   
-   Flare         Start time        Peak      End      Dur    Peak      Total   Sunward       Trigger         RHESSI
-                                                        s     c/s     Counts  Detectors                     Flare #
-                                                                                                                   
  081102_2014  2-Nov-2008 20:14:55 20:15:07 20:16:12    78    3646     172685  n0 n3 n6 n1                          
  081211_1142 11-Dec-2008 11:42:14 11:42:51 11:45:31   197    2408      90103  n5 n1 n3 n4                   8121110
  090706_1702  6-Jul-2009 17:02:53 17:03:10 17:05:13   139    2434      45224  n5 n1 n3 n4                   9070609
@@ -4514,37 +4507,3 @@ Total # flares: 4509  Time range: 12-Aug-2008 00:00:00.000 - 11-Oct-2015 00:00:0
  151003_1134  3-Oct-2015 11:34:42 11:36:36 11:40:50   369    3993     162125  n5 n3 n1 n0                          
  151003_1305  3-Oct-2015 13:05:39 13:06:49 13:09:49   250    2736      80241  n5 n4 n2 n1                          
  151004_0237  4-Oct-2015 02:37:21 02:38:56 02:56:46  1165   30905    6156488  n5 n4 n2 n1     bn151004110  15100401
-                                                                                                                   
-Notes:                                                                                                             
-                                                                                                                   
-Solar flare identification strategy:                                                                               
-  Using the daily CSPEC file,  we construct a measure of the net solar signal (called synthetic                    
-  rate below) by                                                                                                   
-  1) subtracting the summed rates in the anti-sunward detectors from those in the sunward                          
-     detectors for two energy bands,                                                                               
-  2) smoothing these two rates with a square wave to produce a value sensitive                                     
-     to solar flares and multiplying them together, and                                                            
-  3) multiplying that value by the short wavelength (0.5 - 4 Å) flux seen with                                     
-     the GOES soft X-ray sensor.                                                                                   
-  Time intervals with this measure of the solar flux greater than the value typical for a C2 flare are             
-  identified as solar flares.                                                                                      
-                                                                                                                   
-Description of Columns:                                                                                            
-  Flare -             Flare number constructed from start time of flare: yymmdd_hhmm where yy=year, mm=month,      
-                      dd=day of month, hh=hour, and mm=minute, all two digits.                                     
-  Start time -        Time when the synthetic rate exceeds the level corresponding to a C2 flare                   
-  Peak time -         Time of maximum rate in the 12-25 keV band                                                   
-  End time -          Time when the synthetic rate became less than the level corresponding to a C2 flare          
-  Dur -               Duration of flare in seconds                                                                 
-  Peak rate -         Maximum rate in the 12-25 keV band in counts/sec                                             
-  Total counts -      Total counts in the 12-25 keV band                                                           
-  Sunward Detectors - Four most sunward NaI detectors at the peak time (in 12-25 keV band) of the flare            
-  Trigger -           Fermi Trigger Designation if flare caused a trigger.  If there is more than one trigger      
-                      during flare, this is the one nearest to the peak time.                                      
-  RHESSI Flare # -    The RHESSI flare designation if this flare was observed by RHESSI                            
-                                                                                                                   
-The GBM flare catalog FITS file contains more information than displayed in this text listing, including:          
-  *  peak time, peak rate, total counts, and all NaI detector cosines at peak time for five energy bands:          
-     6-12, 12-25, 25-50, 50-100, and 100-300 keV.                                                                  
-  *  all triggers within the duration of the flare.                                                                
-Read the FITS file (in SSW IDL setup that includes packages/spex) via:  cat = gbm_read_cat()                       
