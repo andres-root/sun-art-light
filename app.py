@@ -5,6 +5,7 @@ import time
 import serial
 
 
+# Main function
 def blink_flares():
     filename = 'cleaned_data.txt'
     flare_delays = open(filename, 'r').read().split(',')
