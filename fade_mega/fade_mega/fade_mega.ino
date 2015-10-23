@@ -29,6 +29,7 @@ int brightness10 = 0;
 int brightness11 = 0;
 int brightness12 = 0;
 int brightness13 = 0;
+int brightness14 = 0;
 
 int fadeAmount2 = 5;
 int fadeAmount3 = 5;
@@ -42,6 +43,7 @@ int fadeAmount10 = 5;
 int fadeAmount11 = 5;
 int fadeAmount12 = 5;
 int fadeAmount13 = 5;
+int fadeAmount14 = 5;
 
 
 void setup() {
@@ -64,7 +66,8 @@ void loop() {
   if(Serial.available() > 0) {
     delay_reading = Serial.parseInt() * 10;
     delay_time = 10;
-    led = random(2, 14);
+    led = random(2, 15);
+    led = 14;
   }
     switch(led) {
       case 2:
@@ -243,6 +246,23 @@ void loop() {
         }
         if (brightness13 == 255) {
           fadeAmount13 = -fadeAmount13;
+          delay(delay_reading);
+        }
+        delay(delay_time);
+        break;
+      case 14:
+        analogWrite(led5, brightness14);
+        analogWrite(led7, brightness14);
+        brightness14 = brightness14 + fadeAmount14;
+        if (brightness14 == 0) {
+         digitalWrite(led5, LOW);
+         digitalWrite(led7, LOW);
+         Serial.println(1);
+         fadeAmount14 = -fadeAmount14;
+         delay(1000);
+        }
+        if (brightness14 == 255) {
+          fadeAmount14 = -fadeAmount14;
           delay(delay_reading);
         }
         delay(delay_time);

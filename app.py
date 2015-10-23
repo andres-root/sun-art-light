@@ -10,6 +10,8 @@ def blink_flares():
     flare_delays = open(filename, 'r').read().split(',')
     try:
         port = serial.Serial('/dev/cu.usbmodem1421', 9600)
+    except IOError:
+        raise('Please reconnect the Arduino device')
     except Exception:
         port = serial.Serial('/dev/cu.usbmodem1411', 9600)
 
@@ -26,19 +28,5 @@ def blink_flares():
         print('------------------')
 
 
-def write_to_serial():
-    filename = 'data.txt'
-    content = open(filename, 'r').readlines()
-    data = [c.replace('\n', '') for c in content]
-    port = serial.Serial('/dev/cu.usbmodem1421', 9600)
-
-    for i in range(len(data)):
-        cmnd = '{0}'.format(data[i]).encode()
-        print(cmnd)
-        port.write(cmnd)
-        time.sleep(.500)
-
-
 if __name__ == '__main__':
-    # write_to_serial()
     blink_flares()
