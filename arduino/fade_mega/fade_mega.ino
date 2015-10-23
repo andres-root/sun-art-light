@@ -30,6 +30,7 @@ int brightness11 = 0;
 int brightness12 = 0;
 int brightness13 = 0;
 int brightness14 = 0;
+int brightness15 = 0;
 
 int fadeAmount2 = 5;
 int fadeAmount3 = 5;
@@ -44,6 +45,8 @@ int fadeAmount11 = 5;
 int fadeAmount12 = 5;
 int fadeAmount13 = 5;
 int fadeAmount14 = 5;
+int fadeAmount15 = 5;
+
 
 
 void setup() {
@@ -66,7 +69,7 @@ void loop() {
   if(Serial.available() > 0) {
     delay_reading = Serial.parseInt() * 5;
     delay_time = 10;
-    led = random(2, 15);
+    led = random(2, 16);
   }
     switch(led) {
       case 2:
@@ -76,7 +79,6 @@ void loop() {
          digitalWrite(led2, LOW);
          Serial.print(1, DEC);
          fadeAmount2 = -fadeAmount2;
-         delay(1000);
         }
         if (brightness2 == 255) {
           fadeAmount2 = -fadeAmount2;
@@ -91,7 +93,6 @@ void loop() {
            digitalWrite(led3, LOW);
            Serial.println(1);
            fadeAmount3 = -fadeAmount3;
-           delay(1000);
         }
         if (brightness3 == 255) {
             fadeAmount3 = -fadeAmount3;
@@ -106,7 +107,6 @@ void loop() {
          digitalWrite(led4, LOW);
          Serial.print(1, DEC);
          fadeAmount4 = -fadeAmount4;
-         delay(1000);
         }
         if (brightness4 == 255) {
           fadeAmount4 = -fadeAmount4;
@@ -121,7 +121,6 @@ void loop() {
          digitalWrite(led5, LOW);
          Serial.println(1);
          fadeAmount5 = -fadeAmount5;
-         delay(1000);
         }
         if (brightness5 == 255) {
           fadeAmount5 = -fadeAmount5;
@@ -136,7 +135,6 @@ void loop() {
          digitalWrite(led6, LOW);
          Serial.println(1);
          fadeAmount6 = -fadeAmount6;
-         delay(1000);
         }
         if (brightness6 == 255) {
           fadeAmount6 = -fadeAmount6;
@@ -151,7 +149,6 @@ void loop() {
          digitalWrite(led7, LOW);
          Serial.println(1);
          fadeAmount7 = -fadeAmount7;
-         delay(1000);
         }
         if (brightness7 == 255) {
           fadeAmount7 = -fadeAmount7;
@@ -166,7 +163,6 @@ void loop() {
          digitalWrite(led8, LOW);
          Serial.println(1);
          fadeAmount8 = -fadeAmount8;
-         delay(1000);
         }
         if (brightness8 == 255) {
           fadeAmount8 = -fadeAmount8;
@@ -181,7 +177,6 @@ void loop() {
          digitalWrite(led9, LOW);
          Serial.println(1);
          fadeAmount9 = -fadeAmount9;
-         delay(1000);
         }
         if (brightness9 == 255) {
           fadeAmount9 = -fadeAmount9;
@@ -196,7 +191,6 @@ void loop() {
          digitalWrite(led10, LOW);
          Serial.println(1);
          fadeAmount10 = -fadeAmount10;
-         delay(1000);
         }
         if (brightness10 == 255) {
           fadeAmount10 = -fadeAmount10;
@@ -211,7 +205,6 @@ void loop() {
          digitalWrite(led11, LOW);
          Serial.println(1);
          fadeAmount11 = -fadeAmount11;
-         delay(1000);
         }
         if (brightness11 == 255) {
           fadeAmount11 = -fadeAmount11;
@@ -226,7 +219,6 @@ void loop() {
          digitalWrite(led12, LOW);
          Serial.println(1);
          fadeAmount12 = -fadeAmount12;
-         delay(1000);
         }
         if (brightness12 == 255) {
           fadeAmount12 = -fadeAmount12;
@@ -241,7 +233,6 @@ void loop() {
          digitalWrite(led13, LOW);
          Serial.println(1);
          fadeAmount13 = -fadeAmount13;
-         delay(1000);
         }
         if (brightness13 == 255) {
           fadeAmount13 = -fadeAmount13;
@@ -258,10 +249,30 @@ void loop() {
          digitalWrite(led7, LOW);
          Serial.println(1);
          fadeAmount14 = -fadeAmount14;
-         delay(1000);
         }
         if (brightness14 == 255) {
           fadeAmount14 = -fadeAmount14;
+          delay(delay_reading);
+        }
+        delay(delay_time);
+        break;
+      case 15:
+        analogWrite(led3, brightness15);
+        analogWrite(led9, brightness15);
+        analogWrite(led12, brightness15);
+        brightness15 = brightness15 + fadeAmount15;
+        if (brightness15 == 0) {
+         digitalWrite(led3, LOW);
+         delay(500);
+         digitalWrite(led9, LOW);
+         delay(500);
+         digitalWrite(led12, LOW);
+         delay(500);
+         Serial.println(1);
+         fadeAmount15 = -fadeAmount15;
+        }
+        if (brightness15 == 255) {
+          fadeAmount15 = -fadeAmount15;
           delay(delay_reading);
         }
         delay(delay_time);
