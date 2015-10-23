@@ -64,9 +64,9 @@ void setup() {
 
 void loop() {
   if(Serial.available() > 0) {
-    delay_reading = Serial.parseInt() * 10;
+    delay_reading = Serial.parseInt() * 5;
     delay_time = 10;
-    led = random(2, 21);
+    led = random(2, 15);
   }
     switch(led) {
       case 2:
